@@ -1,5 +1,5 @@
 ---
-title: "Capstone MovieLens"
+title: "MovieLens Project Capstone"
 output:
   pdf_document: 
     latex_engine: xelatex
@@ -714,4 +714,4 @@ Finally, we have tested our models on the validation set. The best model that in
 
 Although it represents a significant gain in performance, one can consider that the margin for error in rating is still important for a 0-5 rating system. One way to improve this performance could be to work on the largest dataset availble, which would require more important computing power.
 
-Another signifiance limit is that this system will not work on predicting new movies that have never been rated before. To handle them, we would cocould conher methods or systems such as content-based or collaborative filtering models.
+Another signifiance limit is that this system will not work on predicting new movies that have never been rated before. To handle them, we could consider other methods or systems such as content-based or collaborative filtering models.
