@@ -543,7 +543,7 @@ In order to take into account these differences, we will apply to our best model
 
 ## 3.5. The movie, user and genres Model with regularization
 
-Regularization constrains the total variability of the effect sizes by penalizing large estimates that come from small sample sizes. This regularisation is applied thanks to penalty term λ that is applied to the different effects.
+Regularization constrains the total variability of the effect sizes by penalizing large estimates that come from small sample sizes. This regularisation is applied thanks to penalty term $\lambda$ that is applied to the different effects.
 
 For instance for the movie effect, the goal is to minimize a RMSE equation that adds a penalty that gets larger when many $b_i$ are large:
 
@@ -585,30 +585,30 @@ movie_user_model_genres_reg <- function(training_dataset, test_dataset,l){
 }
 ```
 
-First, we need to find the penalty λ that fits best our last model. We will use cross validation on the test set to find the best λ.
+First, we need to find the penalty $\lambda$ that fits best our last model. We will use cross validation on the test set to find the best $\lambda$.
 ```{r message=FALSE, warning=FALSE}
-# Set a list of different values of λ to test
+# Set a list of different values of lambda to test
 lambdas <- seq(0, 10, 0.25)
 
-# Compute the RMSE with the new functions with the different values of λ
+# Compute the RMSE with the new functions with the different values of lambda
 rmses <- sapply(lambdas, function(l){
   model_4_prediction <- movie_user_model_genres_reg(train_set,test_set,l)
   return(RMSE(test_set$rating,model_4_prediction))
 })
 ```
 ```{r}
-# Plot the RMSE versus the corresponding values of λ
+# Plot the RMSE versus the corresponding values of lambda
 qplot(lambdas, rmses)
 ```
 
-And the best λ is:
+And the best $\lambda$ is:
 ```{r}
-# Store the best λ that minimize the RMSE
+# Store the best lamdba that minimize the RMSE
 lambda <- lambdas[which.min(rmses)]
 lambda
 ```
 
-We can then train our model based on the train_set and this value of λ and return the predictions based on the test_set:
+We can then train our model based on the train_set and this value of $\lambda$ and return the predictions based on the test_set:
 ```{r message=FALSE, warning=FALSE}
 # Compute the predicted ratings based on the test set for this model
 model_4_prediction <- movie_user_model_genres_reg(train_set,test_set, lambda)
